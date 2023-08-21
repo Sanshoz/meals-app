@@ -4,8 +4,8 @@ import axios from 'axios'
 
 const AppContext = React.createContext()
 
-const allMealsUrl = 'http://www.themealdb.com/api/json/v1/1/search.php?s=A'
-const randomMealUrl = 'http://www.themealdb.com/api/json/v1/1/random.php'
+const allMealsUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=A'
+const randomMealUrl = 'https://www.themealdb.com/api/json/v1/1/random.php'
 
  
 const AppProvider = ({children}) => {
@@ -31,7 +31,7 @@ const AppProvider = ({children}) => {
         
         fetchMeals(allMealsUrl)
     }, [])
-    return <AppContext.Provider value={{meals}}>
+    return <AppContext.Provider value={{loading, meals}}>
         {children}
     </AppContext.Provider>
 }
