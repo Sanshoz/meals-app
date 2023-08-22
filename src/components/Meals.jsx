@@ -3,7 +3,7 @@ import {GrLike} from 'react-icons/gr'
 
 
 const Meals = () => {
-    const {meals, loading} = useGlobalContext()
+    const {meals, loading, selectMeal, addToFavorites} = useGlobalContext()
     
     if(loading) {
         return <section className="section">
@@ -20,14 +20,14 @@ const Meals = () => {
     return <section className = 'section-center'>
         {meals.map((singleMeal)=>{
             const {idMeal, strMeal:title, strMealThumb:image} = singleMeal
-            
-        return <article key={idMeal} className='single-meal'>
-            <img src={image} className="img"/>
+             
+        return <article key={idMeal} className='single-meal' >
+            <img src={image} className="img" onClick={()=>selectMeal(idMeal)} />
             <footer>
                 <h5>
                     {title}
                 </h5>
-                <button className='like-btn'> <GrLike /></button>
+                <button className='like-btn' onClick={()=>addToFavorites(idMeal)}> <GrLike /></button>
             </footer>
         </article>
         })}
